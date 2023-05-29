@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  flex-grow: 1;
+  max-width: 100%;
+  gap: 7px;
+  align-items: center;
+  input {
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    font-weight: inherit;
+    font-size: 1.2 rem;
+    outline: 0;
+    padding: 0.8rem 1.6rem;
+    line-height: 1.5rem;
+  }
+  .search-icon {
+    border-radius: 5px;
+    width: 3.5rem;
+    padding: 12px 0px;
+  }
+}

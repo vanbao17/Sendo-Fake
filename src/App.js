@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import DefaultLayout from './Components/Layout/Components/DefaultLayout/DefaultLayout'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import publicRoutes from './Components/Routes/Routes'
+import PopupLogin from './Components/Layout/Components/PopupLogin/PopupLogin'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className="App" style={{position:"relative"}} >
+        <Routes>
+          {publicRoutes.map((item, index) => {
+            let Layout = DefaultLayout
+            const Page = item.component
+            return (
+              <Route
+                key={index}
+                path={item.path}
+                element={
+                  <Layout>
+                    <Page data={item.path}></Page>
+                    {/* <PopupLogin style={{position:"absolute",top:"0"}} /> */}
+                  </Layout>
+                }
+              ></Route>
+            )
+          })}
+          
+        </Routes>
+        
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
