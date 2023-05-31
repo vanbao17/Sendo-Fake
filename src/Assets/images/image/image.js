@@ -1,14 +1,17 @@
-import foryou1 from "../foryou1.png"
-import foryou2 from "../foryou2.png"
-import foryou3 from "../foryou3.png"
-import foryou4 from "../foryou4.png"
-import foryou5 from "../foryou5.png"
-import foryou6 from "../foryou6.png"
-import foryou7 from "../foryou7.png"
-import foryou8 from "../foryou8.png"
-import foryou9 from "../foryou9.png"
-import foryou10 from "../foryou10.png"
+import foryou1 from "./foryou1.png"
+import foryou2 from "./foryou2.png"
+import foryou3 from "./foryou3.png"
+import foryou4 from "./foryou4.png"
+import foryou5 from "./foryou5.png"
+import foryou6 from "./foryou6.png"
+import foryou7 from "./foryou7.png"
+import foryou8 from "./foryou8.png"
+import foryou9 from "./foryou9.png"
+import foryou10 from "./foryou10.png"
 import banner from "../banner.png"
+export const important = {
+    sale: require("../sale.png")
+}
 const cate = [
     {img:foryou1,name:"Rau sạch Sendo Farm"},
     {img:foryou2,name:"Techzone xả kho -49%"},

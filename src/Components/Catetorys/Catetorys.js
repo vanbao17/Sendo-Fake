@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind'
 import styles from "./Catetorys.module.scss"
+import CatetorysItem from '../CatetoryItem/CatetorysItem';
 const cx = classNames.bind(styles)
 function Catetorys({data}) {
     return (
@@ -7,12 +8,7 @@ function Catetorys({data}) {
             <div className={cx('container')}>
                 {
                     data.map((item,index) => {
-                        return <div key={index} className={cx('item-cate')}>
-                            <a>
-                                <div className={cx('img-cate')}><img src={item.img} alt='Catetory'></img></div>
-                                <span className={cx('title')}>{item.name}</span>
-                            </a>
-                        </div>
+                        return <CatetorysItem mini key={index} item={item} />
                     })
                 }
             </div>

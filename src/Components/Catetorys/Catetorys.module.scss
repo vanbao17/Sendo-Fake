@@ -1,30 +1,9 @@
 .wrapper {
     width: 100%;
-}
-.item-cate {
-    padding: 16px;
-    width: calc(100%/10);
+    background-color: #fff;
 }
 .container {
     width: 85%;
     margin: 0px auto;
     display: flex;
-    .item-cate a {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-.img-cate {
-    width: 100%;
-}
-.item-cate a img {
-    width: 44px;
-    height: 44px;
-    display: block;
-    margin: 0px auto;
-}
-.item-cate a span {
-    display: block;
-    margin-top: 10px;
-    font-size: 14px;
 }
