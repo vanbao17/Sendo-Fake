@@ -8,7 +8,7 @@ function Search() {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('listcate')}>
-        <ListCate width="2.4rem" height="2.4rem"></ListCate>
+        <ListCate width="24px" height="24px "></ListCate>
       </div>
       <input type="text" placeholder="Tìm trên Sendo ..."></input>
       <button className={cx('search-icon')}>

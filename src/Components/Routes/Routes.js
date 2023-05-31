@@ -1,11 +1,12 @@
 import { config } from '@fortawesome/fontawesome-svg-core'
 import routes from '../Config/Config'
 import ViewProducts from '../Pages/ViewProducts/ViewProducts'
+import HomePage from '../Layout/Components/HomePage/HomePage'
 
 const publicRoutes = [
   {
     path: routes.home,
-    component: ViewProducts,
+    component: HomePage,
   },
   {
     path: routes.dodung,

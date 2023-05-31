@@ -1,7 +1,6 @@
 import DefaultLayout from './Components/Layout/Components/DefaultLayout/DefaultLayout'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import publicRoutes from './Components/Routes/Routes'
-import PopupLogin from './Components/Layout/Components/PopupLogin/PopupLogin'
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
                 element={
                   <Layout>
                     <Page data={item.path}></Page>
-                    {/* <PopupLogin style={{position:"absolute",top:"0"}} /> */}
                   </Layout>
                 }
               ></Route>

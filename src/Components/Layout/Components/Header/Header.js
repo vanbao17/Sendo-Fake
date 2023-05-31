@@ -77,7 +77,7 @@ function Header() {
       <nav>
         <header>
           <Link to="/" className={cx('logo')}>
-            <LogoSendo width="7.6rem" height="4rem"></LogoSendo>
+            <LogoSendo width="5.6rem" height="3rem"></LogoSendo>
           </Link>
           <Search></Search>
           <div className={cx('action-user')}>
