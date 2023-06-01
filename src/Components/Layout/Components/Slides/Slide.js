@@ -4,9 +4,10 @@ import ProductItem from '../../../ProductItem/ProductItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef, useState } from 'react';
+import CatetorysItem from '../../../CatetoryItem/CatetorysItem';
 const cx = classNames.bind(styles)
 
-function Slide({data,ovr}) {
+function Slide({data,ovr,prod}) {
     const [lengths,setlenghts] = useState(0)
     const refSlide = useRef()
     function handleSlide() {
@@ -23,9 +24,14 @@ function Slide({data,ovr}) {
         <div className={cx('overflowslide')}>
             <div className={cx('slides')} ref={refSlide}>
                 {
-                    data.map((item,index)=>{
-                        return <ProductItem key={index} pdnormal={item}/>
-                    })
+                    prod? 
+                        data.map((item,index)=>{
+                            return <ProductItem key={index} data={item} pdnormal/>
+                        })
+                        :
+                        data.map((item,index)=>{
+                            return <CatetorysItem  large bgcolor={item.bg}  key={index} item={item} />
+                        })
                 }
             </div>
             {lengths<=(data.length-ovr)&&<button className={cx('icon',"right")} onClick={()=>{

@@ -3,7 +3,7 @@ import styles from "./ProductItem.module.scss"
 import { important } from '../../Assets/images/image/image'
 const cx = classNames.bind(styles)
 
-function ProductItem({pdnormal,pdmain,className}) {
+function ProductItem({pdnormal,pdmain,className,data}) {
     const classes = cx("wrapper",{
         [className]:className
     })
@@ -15,13 +15,13 @@ function ProductItem({pdnormal,pdmain,className}) {
                         <a className={cx('item')}>
                             <div className={cx('content')}>
                                 <div className={cx('image')}>
-                                    <img className={cx('img-main')} src={pdnormal.img}></img>
+                                    <img className={cx('img-main')} src={data.img}></img>
                                     <img className={cx('img-sale')} src={important.sale}></img>
                                 </div>
                                 <div className={cx('price')}>
-                                    <h3>{pdnormal.price}</h3>
-                                    <span className={cx('linethrought')}>{pdnormal.oldPrice}</span>
-                                    <span className={cx('sale')}>{pdnormal.precent}</span>
+                                    <h3>{data.price}</h3>
+                                    <span className={cx('linethrought')}>{data.oldPrice}</span>
+                                    <span className={cx('sale')}>{data.precent}</span>
                                 </div>
                             </div>
                         </a>

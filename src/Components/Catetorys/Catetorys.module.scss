@@ -5,5 +5,11 @@
 .container {
     width: 85%;
     margin: 0px auto;
-    display: flex;
+    .setWidth {
+        width: 100%;
+        display: flex;
+    }
+}
+.container.children {
+    width: 100% !important;
 }

@@ -3,9 +3,15 @@
     background-color: #fff;
 }
 .container-banner {
-    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0px auto;
     position: relative;
+    img {
+        padding: 8px;
+        overflow: hidden;
+    }
 }
 .container-banner .place {
     position: absolute;

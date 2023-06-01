@@ -6,10 +6,6 @@ const cx = classNames.bind(styles)
 function Products() {
     return ( 
         <div className={cx('wrapper')}>
-            <ProductItem pdnormal/>
-            <ProductItem pdnormal/>
-            <ProductItem pdnormal/>
-            <ProductItem pdnormal/>
         </div>
      );
 }

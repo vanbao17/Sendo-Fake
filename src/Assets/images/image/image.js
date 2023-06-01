@@ -10,7 +10,10 @@ import foryou9 from "./foryou9.png"
 import foryou10 from "./foryou10.png"
 import banner from "../banner.png"
 export const important = {
-    sale: require("../sale.png")
+    sale: require("../sale.png"),
+    bannerGenuine: require("../bannerGenuine.jpg"),
+    tickxanh: require("../tickxanh.png"),
+    extention: require("../extention.png")
 }
 const cate = [
     {img:foryou1,name:"Rau sạch Sendo Farm"},
