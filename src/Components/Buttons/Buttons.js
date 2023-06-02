@@ -4,22 +4,24 @@ const cx = classNames.bind(styles)
 function Buttons({
   normal,
   children,
-  outline,
   primary,
-  circle,
   large,
+  hide,
   onClick,
   to,
+  chat,
   href,
+  totop,
   className,
   ...passProps
 }) {
   const classes = cx('wrapper', {
     normal,
     primary,
-    outline,
-    circle,
     large,
+    chat,
+    totop,
+    hide,
     [className]: className,
   })
   const props = {

@@ -7,11 +7,11 @@ import { useEffect, useRef, useState } from 'react';
 import CatetorysItem from '../../../CatetoryItem/CatetorysItem';
 const cx = classNames.bind(styles)
 
-function Slide({data,ovr,prod}) {
+function Slide({data,ovr,prod,size}) {
     const [lengths,setlenghts] = useState(0)
     const refSlide = useRef()
     function handleSlide() {
-        refSlide.current.style.transform=`translateX(-${144*lengths+(lengths-1)*15}px)`
+        refSlide.current.style.transform=`translateX(-${size*lengths+(lengths-1)*15}px)`
         if(lengths==0) {
             refSlide.current.style.transform=`translateX(0px)`
         }
@@ -30,7 +30,7 @@ function Slide({data,ovr,prod}) {
                         })
                         :
                         data.map((item,index)=>{
-                            return <CatetorysItem  large bgcolor={item.bg}  key={index} item={item} />
+                            return <CatetorysItem className={cx("item")}  large bgcolor={item.bg}  key={index} item={item} />
                         })
                 }
             </div>
