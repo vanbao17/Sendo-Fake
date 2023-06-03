@@ -6,6 +6,7 @@ import { faAngleRight, faVrCardboard } from '@fortawesome/free-solid-svg-icons'
 import { Context } from '../../../store/Context'
 import { GoogleLogin, GoogleOAuthProvider} from '@react-oauth/google';
 import { gapi } from 'gapi-script'
+import ReactFacebookLogin from 'react-facebook-login'
 const cx = classNames.bind(styles)
 const id="927153163763-liqf9jmc15drk1dfep7mrpn78mk9hg4e.apps.googleusercontent.com";
 function PopupLogin({className,style }) {
@@ -17,6 +18,7 @@ function PopupLogin({className,style }) {
   })
   const classes = cx('wrapper', {[className]: className})
   const {dis,setdis} = useContext(Context)
+  const {user,setuser} = useContext(Context)
   const buttonref = useRef()
   function changeInput(e) {
     if(e.length>=1) {
@@ -33,6 +35,12 @@ function PopupLogin({className,style }) {
       buttonref.current.style.backgroundColor = "#aaa"
       buttonref.current.style.cursor = "not-allowed"
     }
+  }
+  const responseFacebook = (response) => {
+    setuser(response.name);
+  }
+  const handleLoginGG = (response) => {
+    console.log(response);
   }
   return (
     <div className={classes} style={style}>
@@ -57,18 +65,20 @@ function PopupLogin({className,style }) {
             <div className={cx('content2')}>
               <p>Hoặc thông qua : </p>
               <div className={cx("face-goo")}>
-                <GoogleOAuthProvider clientId="927153163763-liqf9jmc15drk1dfep7mrpn78mk9hg4e.apps.googleusercontent.com">
+                <GoogleOAuthProvider clientId="927153163763-liqf9jmc15drk1dfep7mrpn78mk9hg4e.apps.googleusercontent.com" >
                   <GoogleLogin
                       buttonTetx="Đăng nhập bằng Google"
-                      onSuccess={()=>{alert("susscess")}}
-                      onFailure={()=>{alert("error")}}
+                      onSuccess={handleLoginGG}
+                      onFailure={handleLoginGG}
                       cookiePolicy={'single_host_origin'}
                       isSignedIn={true}
                     />
                 </GoogleOAuthProvider>
-
-                <FontAwesomeIcon className={cx("icon",'face')} icon={faVrCardboard} />
-                <FontAwesomeIcon className={cx("icon",'goo')} icon={faVrCardboard} />
+                <ReactFacebookLogin appId='783148693291363' 
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  callback={responseFacebook} 
+                 />
               </div>
               <p>Khi dùng tài khoản Sendo, bạn đã đồng ý về <span style={{color:"#0F62FE"}}>điều khoản dịch vụ.</span></p>
             </div>

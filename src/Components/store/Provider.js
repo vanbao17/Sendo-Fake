@@ -4,6 +4,7 @@ function Provider({children}) {
     const [showGototop,setshowGototop] = useState(false)
     const [menufix,setmenufix] = useState(false)
     const [dis,setdis] = useState(false)
+    const [user,setuser] = useState()
     useEffect(()=>{
         const totop = () => {
             if(document.body.scrollTop > 500 ||document.documentElement.scrollTop > 500) {
