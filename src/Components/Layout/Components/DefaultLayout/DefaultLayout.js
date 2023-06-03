@@ -2,8 +2,7 @@ import classNames from 'classnames/bind'
 import styles from './DefaultLayout.module.scss'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
-import ProviderHeaderContext from '../../../store/ProviderHeader'
-import Banner from '../Banner/Banner'
+import ProviderHeaderContext from '../../../store/Provider'
 const cx = classNames.bind(styles)
 
 function DefaultLayout({ children }) {

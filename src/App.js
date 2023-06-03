@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import publicRoutes from './Components/Routes/Routes'
 import BtnGototop from './Components/Layout/Components/BtnGototop/BtnGototop'
 import BtnChat from './Components/Layout/Components/BtnChat/BtnChat'
-
 function App() {
   return (
     <Router>

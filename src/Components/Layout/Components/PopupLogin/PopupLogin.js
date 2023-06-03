@@ -1,12 +1,20 @@
 import classNames from 'classnames/bind'
 import styles from './PopupLogin.module.scss'
-import {  useContext, useState,useRef } from 'react'
+import {  useContext, useEffect,useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faVrCardboard } from '@fortawesome/free-solid-svg-icons'
 import { Context } from '../../../store/Context'
+import { GoogleLogin, GoogleOAuthProvider} from '@react-oauth/google';
+import { gapi } from 'gapi-script'
 const cx = classNames.bind(styles)
-
+const id="927153163763-liqf9jmc15drk1dfep7mrpn78mk9hg4e.apps.googleusercontent.com";
 function PopupLogin({className,style }) {
+  useEffect(()=>{
+    function start() {
+      gapi.client.init({clientId:id,scope:""})
+    };
+    gapi.load('client:auth2',start)
+  })
   const classes = cx('wrapper', {[className]: className})
   const {dis,setdis} = useContext(Context)
   const buttonref = useRef()
@@ -49,6 +57,16 @@ function PopupLogin({className,style }) {
             <div className={cx('content2')}>
               <p>Hoặc thông qua : </p>
               <div className={cx("face-goo")}>
+                <GoogleOAuthProvider clientId="927153163763-liqf9jmc15drk1dfep7mrpn78mk9hg4e.apps.googleusercontent.com">
+                  <GoogleLogin
+                      buttonTetx="Đăng nhập bằng Google"
+                      onSuccess={()=>{alert("susscess")}}
+                      onFailure={()=>{alert("error")}}
+                      cookiePolicy={'single_host_origin'}
+                      isSignedIn={true}
+                    />
+                </GoogleOAuthProvider>
+
                 <FontAwesomeIcon className={cx("icon",'face')} icon={faVrCardboard} />
                 <FontAwesomeIcon className={cx("icon",'goo')} icon={faVrCardboard} />
               </div>

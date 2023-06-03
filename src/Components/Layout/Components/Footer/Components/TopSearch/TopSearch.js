@@ -17,7 +17,7 @@ function TopSearch() {
     return (  
         <div className={cx('wrapper')}>
             <span className={cx('title')} onClick={handleTitleList}> TOP TÌM KIẾM <FontAwesomeIcon icon={faChevronDown} rotation={listHeight?180:0}/></span>
-            <div className={cx('lists-result')} style={{height:listHeight?"18px":"auto"}}>
+            <div className={cx('lists-result')} style={{height:!listHeight?"18px":"auto"}}>
                 {
                     data.map((text,index)=>{
                         return <a href='' key={index}>{text}</a>

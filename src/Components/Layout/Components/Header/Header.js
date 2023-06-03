@@ -14,6 +14,7 @@ import { Context } from '../../../store/Context'
 const cx = classNames.bind(styles)
 function Header() {
   const {dis,setdis} = useContext(Context)
+  const {menufix,setmenufix} = useContext(Context)
   return (
     <div className={cx('wrapper')}>
       <section>
@@ -28,7 +29,7 @@ function Header() {
           >
             <div className={cx('item-sidebar', 'img-scan')}>
               <div>
-                <img src="https://media3.scdn.vn/img2/2018/5_23/R842FO.png"></img>
+                <img src="https://media3.scdn.vn/img2/2018/5_23/R842FO.png" alt=''></img>
               </div>
               <p>Quét để tải ứng dụng</p>
             </div>
@@ -74,7 +75,7 @@ function Header() {
           </Popup>
         </div>
       </section>
-      <nav>
+      <nav className={cx('nav',menufix?"fixed":"")}>
         <header>
           <Link to="/" className={cx('logo')}>
             <LogoSendo width="5.6rem" height="3rem"></LogoSendo>
