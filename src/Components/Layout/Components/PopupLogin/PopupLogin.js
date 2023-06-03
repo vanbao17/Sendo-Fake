@@ -17,8 +17,8 @@ function PopupLogin({className,style }) {
     gapi.load('client:auth2',start)
   })
   const classes = cx('wrapper', {[className]: className})
-  const {dis,setdis} = useContext(Context)
-  const {user,setuser} = useContext(Context)
+  const {setdis} = useContext(Context)
+  const {setuser} = useContext(Context)
   const buttonref = useRef()
   function changeInput(e) {
     if(e.length>=1) {
@@ -38,10 +38,12 @@ function PopupLogin({className,style }) {
   }
   const responseFacebook = (response) => {
     setuser(response.name);
+    setdis(false)
   }
   const handleLoginGG = (response) => {
-    console.log(response);
+    setuser(response);
   }
+  
   return (
     <div className={classes} style={style}>
       <div className={cx('shadow')} onClick={()=>{setdis(false)}}></div>

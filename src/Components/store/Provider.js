@@ -26,7 +26,7 @@ function Provider({children}) {
         window.addEventListener("scroll", totop);
         return () => {window.removeEventListener('scroll',totop);window.removeEventListener('scroll',fixedmenu)}
     })
-    return <Context.Provider value={{showGototop,setshowGototop,menufix,setmenufix,dis,setdis}} >
+    return <Context.Provider value={{showGototop,setshowGototop,menufix,setmenufix,dis,setdis,user,setuser}} >
         {children}
     </Context.Provider>;
 }

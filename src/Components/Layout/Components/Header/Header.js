@@ -15,6 +15,7 @@ const cx = classNames.bind(styles)
 function Header() {
   const {dis,setdis} = useContext(Context)
   const {menufix,setmenufix} = useContext(Context)
+  const {user} = useContext(Context)
   return (
     <div className={cx('wrapper')}>
       <section>
@@ -89,9 +90,10 @@ function Header() {
                 style={{ width: '24px', height: '24px', color: '#fff' }}
               ></FontAwesomeIcon>
             </div>
-            <Buttons normal className={cx('btn-login')} onClick={()=>{setdis(!dis)}}>
+            {
+              !user?<Buttons normal className={cx('btn-login')} onClick={()=>{setdis(!dis)}}>
               Đăng nhập
-            </Buttons>
+            </Buttons>:<span>{user}</span>}
           </div>
         </header>
         <menu>
