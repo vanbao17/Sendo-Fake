@@ -2,11 +2,11 @@ import classNames from 'classnames/bind';
 import styles from './PopupLogin.module.scss';
 import { useContext, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight, faVrCardboard } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Context } from '../../../store/Context';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import { gapi } from 'gapi-script';
-import ReactFacebookLogin from 'react-facebook-login';
+// import ReactFacebookLogin from 'react-facebook-login';
 const cx = classNames.bind(styles);
 const id = '927153163763-liqf9jmc15drk1dfep7mrpn78mk9hg4e.apps.googleusercontent.com';
 function PopupLogin({ className, style }) {
@@ -35,11 +35,11 @@ function PopupLogin({ className, style }) {
             buttonref.current.style.cursor = 'not-allowed';
         }
     }
-    const responseFacebook = (response) => {
-        setuser(response);
-        setdis(false);
-        setuserfb(true);
-    };
+    // const responseFacebook = (response) => {
+    //     setuser(response);
+    //     setdis(false);
+    //     setuserfb(true);
+    // };
     const handleLoginGG = (response) => {
         setuser(response);
         setusergg(true);
@@ -95,12 +95,12 @@ function PopupLogin({ className, style }) {
                                         isSignedIn={true}
                                     />
                                 </GoogleOAuthProvider>
-                                <ReactFacebookLogin
+                                {/* <ReactFacebookLogin
                                     appId="783148693291363"
                                     autoLoad={true}
                                     fields="name,email,picture"
                                     callback={responseFacebook}
-                                />
+                                /> */}
                             </div>
                             <p>
                                 Khi dùng tài khoản Sendo, bạn đã đồng ý về{' '}
