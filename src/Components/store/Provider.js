@@ -1,34 +1,55 @@
-import { useEffect, useState } from "react";
-import { Context } from "./Context";
-function Provider({children}) {
-    const [showGototop,setshowGototop] = useState(false)
-    const [menufix,setmenufix] = useState(false)
-    const [dis,setdis] = useState(false)
-    const [user,setuser] = useState()
-    useEffect(()=>{
+import { useEffect, useState } from 'react';
+import { Context } from './Context';
+function Provider({ children }) {
+    const [showGototop, setshowGototop] = useState(false);
+    const [menufix, setmenufix] = useState(false);
+    const [dis, setdis] = useState(false);
+    const [user, setuser] = useState({});
+    const [usergg, setusergg] = useState(false);
+    const [userfb, setuserfb] = useState(false);
+    console.log(usergg, userfb, user);
+    useEffect(() => {
         const totop = () => {
-            if(document.body.scrollTop > 500 ||document.documentElement.scrollTop > 500) {
-                setshowGototop(true)
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                setshowGototop(true);
+            } else {
+                setshowGototop(false);
             }
-            else {
-                setshowGototop(false)
-            }
-        }
+        };
         const fixedmenu = () => {
-            if(document.body.scrollTop > 50 ||document.documentElement.scrollTop > 50) {
-                setmenufix(true)
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                setmenufix(true);
+            } else {
+                setmenufix(false);
             }
-            else {
-                setmenufix(false)
-            }
-        }
-        window.addEventListener("scroll", fixedmenu);
-        window.addEventListener("scroll", totop);
-        return () => {window.removeEventListener('scroll',totop);window.removeEventListener('scroll',fixedmenu)}
-    })
-    return <Context.Provider value={{showGototop,setshowGototop,menufix,setmenufix,dis,setdis,user,setuser}} >
-        {children}
-    </Context.Provider>;
+        };
+        window.addEventListener('scroll', fixedmenu);
+        window.addEventListener('scroll', totop);
+        return () => {
+            window.removeEventListener('scroll', totop);
+            window.removeEventListener('scroll', fixedmenu);
+        };
+    });
+    return (
+        <Context.Provider
+            value={{
+                showGototop,
+                setshowGototop,
+                menufix,
+                setmenufix,
+                dis,
+                setdis,
+                user,
+                setuser,
+                usergg,
+                setusergg,
+                userfb,
+                setuserfb,
+            }}
+        >
+            {children}
+        </Context.Provider>
+    );
 }
 
 export default Provider;

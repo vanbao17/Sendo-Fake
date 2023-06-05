@@ -13,7 +13,8 @@ export const important = {
     sale: require("../sale.png"),
     bannerGenuine: require("../bannerGenuine.jpg"),
     tickxanh: require("../tickxanh.png"),
-    extention: require("../extention.png")
+    extention: require("../extention.png"),
+    userfb: require("../userfb.jpg")
 }
 const cate = [
     {img:foryou1,name:"Rau sạch Sendo Farm"},
