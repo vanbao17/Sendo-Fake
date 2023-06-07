@@ -7,7 +7,6 @@ function Provider({ children }) {
     const [user, setuser] = useState({});
     const [usergg, setusergg] = useState(false);
     const [userfb, setuserfb] = useState(false);
-    console.log(usergg, userfb, user);
     useEffect(() => {
         const totop = () => {
             if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
@@ -17,7 +16,7 @@ function Provider({ children }) {
             }
         };
         const fixedmenu = () => {
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 50) {
                 setmenufix(true);
             } else {
                 setmenufix(false);

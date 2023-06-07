@@ -6,7 +6,6 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { Context } from '../../../store/Context';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import { gapi } from 'gapi-script';
-// import ReactFacebookLogin from 'react-facebook-login';
 const cx = classNames.bind(styles);
 const id = '927153163763-liqf9jmc15drk1dfep7mrpn78mk9hg4e.apps.googleusercontent.com';
 function PopupLogin({ className, style }) {
