@@ -4,7 +4,7 @@ function Cart() {
     const location = useLocation();
     return (
         <div>
-            {location.state?.data}
+            {location.state?.data.name}
             <div>Hello</div>
         </div>
     );
