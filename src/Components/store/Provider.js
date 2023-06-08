@@ -4,7 +4,7 @@ function Provider({ children }) {
     const [showGototop, setshowGototop] = useState(false);
     const [menufix, setmenufix] = useState(false);
     const [dis, setdis] = useState(false);
-    const [user, setuser] = useState({ name: 'Phạm Văn Bảo', img: 'hehe' });
+    const [user, setuser] = useState({});
     const [usergg, setusergg] = useState(false);
     const [userfb, setuserfb] = useState(false);
     useEffect(() => {
