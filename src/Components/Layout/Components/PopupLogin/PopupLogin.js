@@ -40,6 +40,7 @@ function PopupLogin({ className, style }) {
     //     setuserfb(true);
     // };
     const handleLoginGG = (response) => {
+        console.log(response);
         setuser(response);
         setusergg(true);
         setdis(false);
@@ -87,6 +88,7 @@ function PopupLogin({ className, style }) {
                             <div className={cx('face-goo')}>
                                 <GoogleOAuthProvider clientId="927153163763-liqf9jmc15drk1dfep7mrpn78mk9hg4e.apps.googleusercontent.com">
                                     <GoogleLogin
+                                        clientId="927153163763-liqf9jmc15drk1dfep7mrpn78mk9hg4e.apps.googleusercontent.com"
                                         buttonTetx="Đăng nhập bằng Google"
                                         onSuccess={handleLoginGG}
                                         onFailure={handleLoginGG}

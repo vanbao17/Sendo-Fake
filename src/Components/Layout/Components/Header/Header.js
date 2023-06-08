@@ -8,11 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import PopupLogin from '../PopupLogin/PopupLogin';
 import { Context } from '../../../store/Context';
 import { important } from '../../../../Assets/images/image/image';
 import Tippy from '@tippyjs/react/headless';
+import { useNavigate } from 'react-router-dom';
 const cx = classNames.bind(styles);
 function Header() {
     const { dis, setdis, user, menufix, usergg, setusergg, setuserfb, setuser } = useContext(Context);
@@ -36,6 +37,7 @@ function Header() {
             label: 'Đơn hàng dịch vụ tiện ích',
         },
     ];
+    const navigate = useNavigate();
     function handleUser() {
         try {
             usergg ? setusergg(false) : setuserfb(false);
@@ -64,6 +66,13 @@ function Header() {
                 </span>
             </div>
         );
+    }
+    function HandleCart() {
+        if (Object.keys(user).length != 0) {
+            navigate('/cart', { state: { data: user } });
+        } else {
+            setdis(true);
+        }
     }
     return (
         <div className={cx('wrapper')}>
@@ -132,7 +141,7 @@ function Header() {
                     </Link>
                     <Search></Search>
                     <div className={cx('action-user')}>
-                        <div className={cx('cart-icon')}>
+                        <div className={cx('cart-icon')} onClick={HandleCart}>
                             <FontAwesomeIcon
                                 className={cx('cart')}
                                 icon={faCartShopping}

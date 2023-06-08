@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import styles from './ListCates.module.scss';
-import CateItem from './CateItem';
 import { faPersonBooth, faPersonDress, faShirt, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
@@ -42,11 +41,12 @@ function ListCates() {
                         <div
                             key={index}
                             className={cx('item')}
-                            onMouseOut={(e) => {
+                            onMouseOut={() => {
                                 setindex(index);
                             }}
                         >
                             <div>
+                                <FontAwesomeIcon className={cx('icon')} icon={item.icon} />
                                 <span>{item.title}</span>
                             </div>
                             <FontAwesomeIcon icon={faChevronRight} />
