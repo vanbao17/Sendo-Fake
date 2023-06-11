@@ -71,9 +71,9 @@ function Header({ nav }) {
     }
     function HandleCart() {
         if (Object.keys(user).length != 0) {
-            setdis(true);
-        } else {
             navigate('/cart', { state: { data: user } });
+        } else {
+            setdis(true);
         }
     }
     return (
