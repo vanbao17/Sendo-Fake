@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 import { LogoSendo } from '../../../IconSvg/IconSvg';
 import Search from '../../../Search/Search';
 import Buttons from '../../../Buttons/Buttons';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import Popup from 'reactjs-popup';
@@ -12,10 +12,12 @@ import { useContext } from 'react';
 import PopupLogin from '../PopupLogin/PopupLogin';
 import { Context } from '../../../store/Context';
 import { important } from '../../../../Assets/images/image/image';
-import Tippy from '@tippyjs/react/headless';
+import TippyHeadless from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css'; // optional
 import { useNavigate } from 'react-router-dom';
+import Navigates from './Navigates';
 const cx = classNames.bind(styles);
-function Header() {
+function Header({ nav }) {
     const { dis, setdis, user, menufix, usergg, setusergg, setuserfb, setuser } = useContext(Context);
     const OptionUser = [
         {
@@ -69,9 +71,9 @@ function Header() {
     }
     function HandleCart() {
         if (Object.keys(user).length != 0) {
-            navigate('/cart', { state: { data: user } });
-        } else {
             setdis(true);
+        } else {
+            navigate('/cart', { state: { data: user } });
         }
     }
     return (
@@ -159,10 +161,10 @@ function Header() {
                                 Đăng nhập
                             </Buttons>
                         ) : (
-                            <Tippy
+                            <TippyHeadless
                                 interactive
                                 offset={[-40, 3]}
-                                delay={[100, 0]}
+                                delay={[100, 10]}
                                 placement="bottom"
                                 render={renderOptionUser}
                             >
@@ -172,35 +174,11 @@ function Header() {
                                     </div>
                                     <span>{user.name}</span>
                                 </div>
-                            </Tippy>
+                            </TippyHeadless>
                         )}
                     </div>
                 </header>
-                <menu>
-                    <NavLink to="/" className={(nav) => cx('menu-item', { active: nav.isActive })}>
-                        {' '}
-                        Cho bạn{' '}
-                    </NavLink>
-                    <NavLink to="/lamdep" className={(nav) => cx('menu-item', { active: nav.isActive })}>
-                        {' '}
-                        Chăm sóc và bảo dưỡng oto{' '}
-                    </NavLink>
-                    <NavLink to="/maymoc" className={(nav) => cx('menu-item', { active: nav.isActive })}>
-                        Máy cơ khí chế tạo
-                    </NavLink>
-                    <NavLink to="/tuixach" className={(nav) => cx('menu-item', { active: nav.isActive })}>
-                        {' '}
-                        Túi xách nam{' '}
-                    </NavLink>
-                    <NavLink to="/phukien" className={(nav) => cx('menu-item', { active: nav.isActive })}>
-                        {' '}
-                        Phụ kiện bên trong oto{' '}
-                    </NavLink>
-                    <NavLink to="/dodung" className={(nav) => cx('menu-item', { active: nav.isActive })}>
-                        {' '}
-                        Đồ dùng phòng ăn uống{' '}
-                    </NavLink>
-                </menu>
+                {nav && <Navigates />}
             </nav>
             {dis ? <PopupLogin style={{ position: 'fixed', top: '0' }} /> : <div></div>}
         </div>

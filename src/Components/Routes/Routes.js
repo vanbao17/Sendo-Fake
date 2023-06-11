@@ -3,6 +3,7 @@ import routes from '../Config/Config';
 import ViewProducts from '../Pages/ViewProducts/ViewProducts';
 import HomePage from '../Layout/Components/HomePage/HomePage';
 import Cart from '../Pages/Cart/Cart';
+import HeaderNoneCate from '../Pages/HeaderNoneCate/HeaderNoneCate';
 const publicRoutes = [
     {
         path: routes.home,
@@ -31,6 +32,7 @@ const publicRoutes = [
     {
         path: routes.cart,
         component: Cart,
+        layout: HeaderNoneCate,
     },
 ];
 export default publicRoutes;
