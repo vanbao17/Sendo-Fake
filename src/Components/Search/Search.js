@@ -3,7 +3,7 @@ import styles from './Search.module.scss';
 import { ListCate } from '../IconSvg/IconSvg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react';
+import Tippy from '@tippyjs/react/headless';
 import ListCates from '../ListCates/ListCates';
 const cx = classNames.bind(styles);
 function Search() {
@@ -13,11 +13,11 @@ function Search() {
     return (
         <div className={cx('wrapper')}>
             <Tippy
-                interactive
+                interactive={true}
                 appendTo={() => document.body}
                 // visible
                 offset={[50, 15]}
-                delay={[100, 0]}
+                delay={[0, 0]}
                 placement="bottom"
                 render={renderListCate}
             >
