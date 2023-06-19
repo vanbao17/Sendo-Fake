@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Rate.module.scss';
 import ProductItem from '../ProductItem/ProductItem';
 import ProgressItem from './ProgressItem/ProgressItem';
+import { useState } from 'react';
 const cx = classNames.bind(styles);
 
 function Rate({ data }) {
@@ -13,6 +14,20 @@ function Rate({ data }) {
         { rate: 2, count: 0 },
         { rate: 1, count: 0 },
     ];
+    let max = 0;
+    dt.forEach((item) => {
+        if (item.rate == 5) {
+            max = item.count;
+        }
+    });
+    const [selectted, setselectted] = useState([]);
+    function handleBtn(index) {
+        if (selectted.includes(index) == false) {
+            setselectted([...selectted, index]);
+        } else {
+            setselectted(selectted.filter((num) => num != index));
+        }
+    }
     return (
         <div className={cx('wrapper')}>
             <div className={cx('nonTempRate')}>
@@ -21,39 +36,48 @@ function Rate({ data }) {
                 </span>
                 <div className={cx('ovrRate')}>
                     <div className={cx('total')}>
-                        <span>
-                            <span className={cx('avg')}>5.0</span>/5
+                        <span className={cx('dis-total')}>
+                            <span className={cx('avg')}>{(max / total) * 5}</span>
+                            <span>/5</span>
+                            <div className={cx('stars')}></div>
                         </span>
-                        <div className={cx('stars')}></div>
                         <div className={cx('notification')}>
                             Đây là thông tin người mua đánh giá shop bán sản phẩm này có đúng mô tả không.
                         </div>
                     </div>
                     <div className={cx('dis-rate')}>
                         {dt.map((item, index) => {
-                            return <ProgressItem sum={total} data={item.count} className={'star' + item.rate} />;
+                            return (
+                                <ProgressItem
+                                    key={index}
+                                    sum={total}
+                                    data={item.count}
+                                    className={'star' + item.rate}
+                                />
+                            );
                         })}
                     </div>
                 </div>
                 <div className={cx('button-rate')}>
-                    <button className={cx('btn')}>
+                    <button className={cx('btn', selectted.length == 0 ? 'active' : '')}>
                         <span>Tất cả</span>
                     </button>
-                    <button className={cx('btn')}>
-                        <span>5 Sao</span>
-                    </button>
-                    <button className={cx('btn')}>
-                        <span>4 Sao</span>
-                    </button>
-                    <button className={cx('btn')}>
-                        <span>3 Sao</span>
-                    </button>
-                    <button className={cx('btn')}>
-                        <span>2 Sao</span>
-                    </button>
-                    <button className={cx('btn')}>
-                        <span>1 Sao</span>
-                    </button>
+                    {dt.map((item, index) => {
+                        return (
+                            <button
+                                key={index}
+                                className={cx(
+                                    'btn',
+                                    selectted.length > 0 ? (selectted.includes(index) == true ? 'active' : '') : '',
+                                )}
+                                onClick={() => {
+                                    handleBtn(index);
+                                }}
+                            >
+                                <span>{-(index - 5)} Sao</span>
+                            </button>
+                        );
+                    })}
                     <button className={cx('btn')}>
                         <span>Đánh giá có hình</span>
                     </button>

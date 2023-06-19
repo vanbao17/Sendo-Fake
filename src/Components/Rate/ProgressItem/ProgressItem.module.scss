@@ -51,8 +51,18 @@
 .progress {
     display: inline-block;
     border-radius: 5px;
+    position: relative;
 }
 .count {
     width: 12%;
     margin-left: 12px;
+}
+.bgr-red {
+    border-radius: 5px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #e5101d;
+    z-index: 9;
 }
