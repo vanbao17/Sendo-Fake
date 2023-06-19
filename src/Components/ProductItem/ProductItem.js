@@ -1,45 +1,53 @@
-import classNames from 'classnames/bind'
-import styles from "./ProductItem.module.scss"
-import { important } from '../../Assets/images/image/image'
-import { ig } from '../../Assets/images'
-const cx = classNames.bind(styles)
+import classNames from 'classnames/bind';
+import styles from './ProductItem.module.scss';
+import { important } from '../../Assets/images/image/image';
+import { ig } from '../../Assets/images';
+import { useNavigate } from 'react-router-dom';
+const cx = classNames.bind(styles);
 
-function ProductItem({pdnormal,pdmain,className,data}) {
-    const classes = cx("wrapper",{
-        [className]:className
-    })
-    return ( 
+function ProductItem({ pdnormal, pdmain, className, data, width, height }) {
+    const classes = cx('wrapper', {
+        [className]: className,
+    });
+    const navigate = useNavigate();
+    function HandlePath() {
+        navigate('/detail', { state: { dt: data } });
+    }
+    return (
         <div className={classes}>
-            {
-                pdnormal &&
-                    <div className={cx('item-slide')}>
-                        <a className={cx('item')} href=''>
-                            <div className={cx('content')}>
-                                <div className={cx('image')}>
-                                    <img className={cx('img-main')} src={data.img}></img>
-                                    <img className={cx('img-sale')} src={important.sale}></img>
-                                </div>
-                                <div className={cx('price')}>
-                                    <h3>{data.price}</h3>
-                                    <span className={cx('linethrought')}>{data.oldPrice}</span>
-                                    <span className={cx('sale')}>{data.precent}</span>
-                                </div>
+            {pdnormal && (
+                <div className={cx('item-slide')}>
+                    <a className={cx('item')} href="">
+                        <div className={cx('content')} style={{ width: width, height: height }}>
+                            <div className={cx('image')}>
+                                <img className={cx('img-main')} src={data.img}></img>
+                                {data.name ? <></> : <img className={cx('img-sale')} src={important.sale}></img>}
                             </div>
-                        </a>
-                    </div>   
-            }
-            {
-                pdmain &&
-                <div className={cx('item-pdmain')}>
-                    <a className={cx('item')} href=''>
+                            {data.name && <div className={cx('name')}>{data.name}</div>}
+                            <div className={cx('price')} style={{ paddingTop: data.name ? ' 0px' : '20px' }}>
+                                {!data.name && <h3>{data.price}</h3>}
+                                <span className={cx('linethrought')}>{data.oldPrice}</span>
+                                <span className={cx('sale')}>{data.precent}</span>
+                                {data.name && <h3>{data.price}</h3>}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            )}
+            {pdmain && (
+                <div className={cx('item-pdmain')} onClick={HandlePath}>
+                    <div className={cx('item')}>
                         <div className={cx('pdmain-content')}>
                             <div className={cx('image')}>
-                                <img className={cx('img-main')} src="https://media3.scdn.vn/img4/2020/04_18/FY2uSlXBNHrCQoRmYbDc_simg_b5529c_250x250_maxb.jpg"></img>
+                                <img
+                                    className={cx('img-main')}
+                                    src="https://media3.scdn.vn/img4/2020/04_18/FY2uSlXBNHrCQoRmYbDc_simg_b5529c_250x250_maxb.jpg"
+                                ></img>
                             </div>
                             <div className={cx('infor')}>
                                 <div className={cx('name')}>
                                     <img className={cx('img-shop')} src={ig.shoptag}></img>
-                                    <span >Đồng hồ </span>
+                                    <span>Đồng hồ </span>
                                 </div>
                                 <div className={cx('price')}>
                                     <span className={cx('linethrought')}>{data.oldPrice}</span>
@@ -48,7 +56,7 @@ function ProductItem({pdnormal,pdmain,className,data}) {
                                 </div>
                                 <div className={cx('tag')}>
                                     <img className={cx('img-shop')} src={ig.tragoptag}></img>
-                                    <span>Trả góp Kredivo</span> 
+                                    <span>Trả góp Kredivo</span>
                                 </div>
                                 <div className={cx('buyopen')}>
                                     <span>Mở bán</span>
@@ -65,11 +73,11 @@ function ProductItem({pdnormal,pdmain,className,data}) {
                                 </div>
                             </div>
                         </div>
-                    </a>
-                </div>      
-            }
+                    </div>
+                </div>
+            )}
         </div>
-     );
+    );
 }
 
 export default ProductItem;

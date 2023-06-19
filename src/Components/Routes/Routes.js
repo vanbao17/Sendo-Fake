@@ -1,9 +1,9 @@
-import { config } from '@fortawesome/fontawesome-svg-core';
 import routes from '../Config/Config';
 import ViewProducts from '../Pages/ViewProducts/ViewProducts';
 import HomePage from '../Layout/Components/HomePage/HomePage';
 import Cart from '../Pages/Cart/Cart';
 import HeaderNoneCate from '../Pages/HeaderNoneCate/HeaderNoneCate';
+import Detail from '../Pages/Detail/Detail';
 const publicRoutes = [
     {
         path: routes.home,
@@ -32,6 +32,11 @@ const publicRoutes = [
     {
         path: routes.cart,
         component: Cart,
+        layout: HeaderNoneCate,
+    },
+    {
+        path: routes.detail,
+        component: Detail,
         layout: HeaderNoneCate,
     },
 ];

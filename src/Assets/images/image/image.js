@@ -16,6 +16,7 @@ export const important = {
     extention: require('../extention.png'),
     userfb: require('../userfb.jpg'),
     cartEmty: require('../CartNon.png'),
+    shop: require('../shop.png'),
 };
 const cate = [
     { img: foryou1, name: 'Rau sạch Sendo Farm' },

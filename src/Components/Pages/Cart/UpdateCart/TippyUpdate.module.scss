@@ -20,7 +20,7 @@
         border-radius: 4px;
         background-color: #e7e8ea;
         color: #3f4b53;
-        transition: 0.25s;
+        cursor: pointer;
     }
     .title {
         padding: 6px;
@@ -43,6 +43,7 @@
         height: 60px;
         border: 2px solid transparent;
         border-radius: 4px;
+        cursor: pointer;
     }
     img {
         width: 100%;
@@ -71,13 +72,10 @@
         }
     }
 }
-.list-colors a.active {
-    border-color: #ee2624;
-}
-.list-sizes a.active {
+.list-sizes .item.active {
     border-color: #ee2624;
     background-color: #fff;
 }
-.update-product.active {
-    box-shadow: 0 0 0 1px #3f81fe;
+.list-colors .item-img.active {
+    border-color: #ee2624;
 }

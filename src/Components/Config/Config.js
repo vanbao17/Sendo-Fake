@@ -6,5 +6,6 @@ const routes = {
     phukien: '/phukien',
     dodung: '/dodung',
     cart: '/cart',
+    detail: '/detail',
 };
 export default routes;

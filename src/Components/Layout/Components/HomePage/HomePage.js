@@ -16,16 +16,18 @@ function HomePage() {
             <Catetorys data={home.catetorys} mini />
             <Banner img={home.banner} />
             <ContainerIntro>
-                <Slide data={proSale} ovr={7} size={144} prod />
+                <Slide data={proSale} ovr={7} size={144} prod={true} />
             </ContainerIntro>
             <ContainerIntro title="Thương hiệu chính hãng" icon={important.tickxanh}>
                 <Banner img={important.bannerGenuine} />
-                <Slide data={genuine} ovr={6} size={198} />
+                <Slide data={genuine} ovr={6} size={198} prod={false} />
             </ContainerIntro>
             <ContainerIntro title="Tiện ích cho bạn" icon={important.extention}>
                 <Catetorys children data={cateExtention} mini bg={true} />
             </ContainerIntro>
-            <Products data={proSale} />
+            <div className={cx('containerPro')} style={{ width: '85%', margin: '0px auto' }}>
+                <Products data={proSale} />
+            </div>
         </div>
     );
 }

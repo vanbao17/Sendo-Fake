@@ -3,10 +3,13 @@ import classNames from 'classnames/bind';
 import styles from './Cart.module.scss';
 import { important } from '../../../Assets/images/image/image';
 import CartItem from './CartItem';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 function Cart() {
     const location = useLocation();
+    const [update, setupdate] = useState(true);
+    const [selectAll, setselectAll] = useState(false);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container')}>
@@ -23,28 +26,81 @@ function Cart() {
                 <div className={cx('your-cart')}>
                     <div className={cx('title')}>
                         <h3>Giỏ hàng của bạn ()</h3>
-                        <span className={cx('update')}>Sửa</span>
+                        {update && (
+                            <span
+                                className={cx('update')}
+                                onClick={() => {
+                                    setupdate(false);
+                                }}
+                            >
+                                Sửa
+                            </span>
+                        )}
                     </div>
                     <div className={cx('container-list')}>
                         <div className={cx('list-carts')}>
-                            <CartItem />
+                            <CartItem update={update} select={selectAll} />
+                            <CartItem update={update} select={selectAll} />
+                            <CartItem update={update} select={selectAll} />
+                            <CartItem update={update} select={selectAll} />
+                            <CartItem update={update} select={selectAll} />
+                            <CartItem update={update} select={selectAll} />
+                            {!update && (
+                                <div className={cx('item', 'action')}>
+                                    <div className={cx('selectAll')}>
+                                        <input
+                                            type="checkbox"
+                                            onClick={() => {
+                                                setselectAll(!selectAll);
+                                            }}
+                                        />
+                                        <span>Tất cả</span>
+                                    </div>
+                                    <div className={cx('action-select')}>
+                                        <button
+                                            className={cx('btn-select', !selectAll && 'dis')}
+                                            disabled={!selectAll ? true : false}
+                                        >
+                                            <span>Yêu thích</span>
+                                        </button>
+                                        <button
+                                            className={cx('btn-select', !selectAll && 'dis')}
+                                            disabled={!selectAll ? true : false}
+                                        >
+                                            <span>Xóa</span>
+                                        </button>
+                                        <button className={cx('btn-select')}>
+                                            <span
+                                                onClick={() => {
+                                                    setupdate(!update);
+                                                }}
+                                            >
+                                                Xong
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div className={cx('background-sticky')}></div>
+                                </div>
+                            )}
                         </div>
-                        <div className={cx('total')}>
-                            <div className={cx('voucherSendo')}>
-                                <span>Mã ưu đãi Sendo (15)</span>
-                                <span className={cx('enterCode')}>Chọn/nhập mã</span>
+                        {update && (
+                            <div className={cx('total')}>
+                                <div className={cx('voucherSendo')}>
+                                    <span>Mã ưu đãi Sendo (15)</span>
+                                    <span className={cx('enterCode')}>Chọn/nhập mã</span>
+                                </div>
+                                <hr></hr>
+                                <div className={cx('resultTotal')}>
+                                    <span>Tạm tính: </span>
+                                    <h3>0đ</h3>
+                                </div>
+                                <div className={cx('btn-buynow')}>
+                                    <button>
+                                        <span>Mua Ngay</span>
+                                    </button>
+                                </div>
                             </div>
-                            <hr></hr>
-                            <div className={cx('resultTotal')}>
-                                <span>Tạm tính: </span>
-                                <h3>0đ</h3>
-                            </div>
-                            <div className={cx('btn-buynow')}>
-                                <button>
-                                    <span>Mua Ngay</span>
-                                </button>
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>

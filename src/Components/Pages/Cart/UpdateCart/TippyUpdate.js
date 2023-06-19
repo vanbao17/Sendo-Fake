@@ -15,6 +15,9 @@ function TippyUpdate({ size = 38, color = 'hehe', data }) {
         ],
     };
     const [dtupdate, setdtupdate] = useState({ size: size, color: color });
+    const [active, setactive] = useState(null);
+    const [active1, setactive1] = useState(null);
+    function handleClickBtn(index, item) {}
     return (
         <div className={cx('container-update')}>
             <div className={cx('size')}>
@@ -24,15 +27,16 @@ function TippyUpdate({ size = 38, color = 'hehe', data }) {
                 <div className={cx('list-sizes')}>
                     {dt.size.map((item, index) => {
                         return (
-                            <NavLink
+                            <button
                                 key={index}
-                                className={(nav) => cx('item', { active: nav.isActive })}
+                                className={cx('item', active == index ? 'active' : '')}
                                 onClick={() => {
+                                    setactive(index);
                                     setdtupdate({ size: item, color: dtupdate.color });
                                 }}
                             >
                                 {item}
-                            </NavLink>
+                            </button>
                         );
                     })}
                 </div>
@@ -44,15 +48,16 @@ function TippyUpdate({ size = 38, color = 'hehe', data }) {
                 <div className={cx('list-colors')}>
                     {dt.img.map((item, index) => {
                         return (
-                            <NavLink
+                            <button
                                 key={index}
-                                className={(nav) => cx('item-img', { active: nav.isActive })}
+                                className={cx('item-img', active1 == index ? 'active' : '')}
                                 onClick={() => {
+                                    setactive1(index);
                                     setdtupdate({ size: dtupdate.size, color: item });
                                 }}
                             >
                                 <img src={item} alt="img"></img>
-                            </NavLink>
+                            </button>
                         );
                     })}
                 </div>
